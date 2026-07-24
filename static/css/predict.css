@@ -1,0 +1,497 @@
+/* ==========================
+   GOOGLE FONT
+========================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    position:relative;
+
+    background:
+        linear-gradient(rgba(0,0,0,.60),rgba(0,0,0,.65)),
+        url("../images/forest-bg.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+/* ==========================
+   NAVBAR
+========================== */
+
+.navbar{
+
+    position:fixed;
+
+    top:20px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:92%;
+    max-width:1300px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 40px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.2);
+
+    z-index:1000;
+}
+
+.logo{
+
+    color:white;
+
+    font-size:28px;
+
+    font-weight:700;
+}
+
+.logo i{
+
+    color:#7CFC00;
+
+    margin-right:10px;
+}
+
+.navbar ul{
+
+    display:flex;
+
+    list-style:none;
+
+    gap:35px;
+}
+
+.navbar a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:500;
+
+    transition:.3s;
+}
+
+.navbar a:hover,
+.navbar .active{
+
+    color:#8BC34A;
+}
+
+/* ==========================
+   SECTION
+========================== */
+
+.upload-section{
+
+    width:100%;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:140px 20px 50px;
+}
+
+/* ==========================
+   GLASS CARD
+========================== */
+
+.glass-card{
+
+    width:100%;
+    max-width:850px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:25px;
+
+    padding:45px;
+
+    text-align:center;
+
+    color:white;
+}
+
+.glass-card h1{
+
+    font-size:40px;
+
+    margin-bottom:15px;
+}
+
+.glass-card p{
+
+    color:#ececec;
+
+    line-height:1.8;
+
+    margin-bottom:35px;
+}
+
+/* ==========================
+   DRAG AREA
+========================== */
+
+.drag-area{
+
+    border:3px dashed rgba(255,255,255,.45);
+
+    border-radius:20px;
+
+    padding:55px 30px;
+
+    transition:.35s;
+
+    cursor:pointer;
+}
+
+.drag-area:hover{
+
+    border-color:#8BC34A;
+
+    background:rgba(255,255,255,.08);
+}
+
+.drag-area i{
+
+    font-size:70px;
+
+    color:#8BC34A;
+
+    margin-bottom:20px;
+}
+
+.drag-area h3{
+
+    margin-bottom:10px;
+
+    font-size:24px;
+}
+
+.drag-area span{
+
+    display:block;
+
+    margin-bottom:20px;
+}
+
+/* ==========================
+   BROWSE BUTTON
+========================== */
+
+.browse-btn{
+
+    display:inline-block;
+
+    background:#2E7D32;
+
+    color:white;
+
+    padding:14px 30px;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.browse-btn:hover{
+
+    background:#43A047;
+}
+
+/* ==========================
+   IMAGE PREVIEW
+========================== */
+
+.preview-box{
+
+    margin-top:35px;
+
+    display:flex;
+    justify-content:center;
+}
+
+.preview-box img{
+
+    max-width:100%;
+
+    max-height:320px;
+
+    border-radius:18px;
+
+    display:none;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.4);
+}
+
+/* ==========================
+   PREDICT BUTTON
+========================== */
+
+.predict-btn{
+
+    margin-top:35px;
+
+    border:none;
+
+    outline:none;
+
+    background:#2E7D32;
+
+    color:white;
+
+    padding:18px 45px;
+
+    border-radius:50px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+}
+
+.predict-btn:hover{
+
+    background:#43A047;
+
+    transform:translateY(-3px);
+}
+
+/* ==========================
+   LOADING
+========================== */
+
+#loading{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,.85);
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    flex-direction:column;
+
+    z-index:9999;
+}
+
+.loader{
+
+    width:80px;
+    height:80px;
+
+    border:8px solid rgba(255,255,255,.2);
+
+    border-top:8px solid #8BC34A;
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
+}
+
+#loading h2{
+
+    color:white;
+
+    margin-top:25px;
+}
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+    }
+
+    to{
+
+        transform:rotate(360deg);
+    }
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:768px){
+
+    .navbar{
+
+        flex-direction:column;
+
+        gap:15px;
+
+        padding:20px;
+    }
+
+    .navbar ul{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+        gap:18px;
+    }
+
+    .glass-card{
+
+        padding:30px 20px;
+    }
+
+    .glass-card h1{
+
+        font-size:30px;
+    }
+
+    .drag-area{
+
+        padding:40px 20px;
+    }
+
+    .drag-area i{
+
+        font-size:55px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .glass-card h1{
+
+        font-size:24px;
+    }
+
+    .predict-btn{
+
+        width:100%;
+    }
+
+    .browse-btn{
+
+        width:100%;
+    }
+
+}
+/* ===============================
+   Loading Overlay
+=================================*/
+
+#loadingOverlay{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,.85);
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+z-index:99999;
+
+color:white;
+
+}
+
+.loader{
+
+width:80px;
+height:80px;
+
+border:8px solid rgba(255,255,255,.2);
+
+border-top:8px solid #7CFC00;
+
+border-radius:50%;
+
+animation:spin 1s linear infinite;
+
+margin-bottom:25px;
+
+}
+
+@keyframes spin{
+
+0%{
+transform:rotate(0deg);
+}
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+#loadingOverlay h2{
+
+font-size:30px;
+
+margin-bottom:10px;
+
+}
+
+#loadingOverlay p{
+
+font-size:18px;
+
+opacity:.8;
+
+}
+
+.predict-btn:disabled{
+
+opacity:.7;
+
+cursor:not-allowed;
+
+}

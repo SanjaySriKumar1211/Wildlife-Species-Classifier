@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wildlife Species Classifier</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <i class="fa-solid fa-paw"></i>
+            WildlifeAI
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/predict">Predict</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="overlay"></div>
+
+        <div class="hero-content">
+
+            <h1>
+                Wildlife Species
+                <span>Classifier</span>
+            </h1>
+
+            <p>
+                Detect wildlife species instantly using Artificial Intelligence.
+                Upload an image and receive accurate predictions along with
+                habitat, scientific name, diet, conservation status, and more.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="/predict" class="btn primary">
+                    <i class="fa-solid fa-camera"></i>
+                    Start Prediction
+                </a>
+
+                <a href="/about" class="btn secondary">
+                    <i class="fa-solid fa-camera"></i>
+                    Learn More
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================================================
+         👑 THE LIQUID GLASS MORPHING GRAPHICS ENGINE MATRIX
+         ========================================================================== -->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display:none;">
+        <defs>
+            <filter id="liquid-goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- Global JavaScript Asset Link Mapping -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

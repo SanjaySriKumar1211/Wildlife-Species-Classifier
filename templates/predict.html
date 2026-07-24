@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Wildlife Species</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/predict.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+
+    <!-- JavaScript -->
+    <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="overlay"></div>
+
+    <!-- Navbar -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <i class="fa-solid fa-paw"></i>
+            WildlifeAI
+        </div>
+
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/predict" class="active">Predict</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- Upload Section -->
+
+    <section class="upload-section">
+
+        <div class="glass-card">
+
+            <h1>Wildlife Species Prediction</h1>
+
+            <p>
+                Upload a wildlife image and let our AI identify the species
+                along with useful information.
+            </p>
+
+            <!-- Upload Form -->
+
+            <form
+                id="predictForm"
+                action="/predict"
+                method="POST"
+                enctype="multipart/form-data">
+
+                <!-- Drag Area -->
+
+                <div class="drag-area" id="dropArea">
+
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                    <h3>Drag & Drop Image Here</h3>
+
+                    <span>or</span>
+
+                    <label class="browse-btn">
+
+                        Browse Image
+
+                        <input
+                            type="file"
+                            id="imageInput"
+                            name="image"
+                            accept="image/*"
+                            hidden
+                            required>
+
+                    </label>
+
+                </div>
+
+                <!-- Preview -->
+
+                <div class="preview-box">
+
+                    <img
+                        id="previewImage"
+                        src=""
+                        alt="Preview">
+
+                </div>
+
+                <!-- Predict Button -->
+
+                <button
+                    type="submit"
+                    class="predict-btn"
+                    id="predictBtn">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    Predict Species
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- Loading Overlay -->
+
+    <div id="loadingOverlay">
+
+        <div class="loader"></div>
+
+        <h2>AI is analyzing the wildlife species...</h2>
+
+        <p>Please wait a few seconds.</p>
+
+    </div>
+
+    <!-- Loading Script -->
+
+    <script>
+
+        document.getElementById("predictForm").addEventListener("submit", function () {
+
+            document.getElementById("loadingOverlay").style.display = "flex";
+
+            document.getElementById("predictBtn").disabled = true;
+
+        });
+
+    </script>
+
+</body>
+
+</html>

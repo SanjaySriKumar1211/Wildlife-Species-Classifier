@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <i class="fa-solid fa-paw"></i>
+            WildlifeAI
+        </div>
+
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/predict">Predict</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- ================= RESULT SECTION ================= -->
+
+    <section class="result-section">
+
+        <div class="result-card">
+
+            <!-- Left Side: Image Presentation -->
+
+            <div class="image-card">
+
+                <h2>Uploaded Image</h2>
+
+                <img src="{{ url_for('static', filename='uploads/' + image) }}" alt="Animal Image">
+
+            </div>
+
+            <!-- Right Side: Analytics & Details -->
+
+            <div class="info-card">
+
+                <h1>{{ animal }}</h1>
+
+                <div class="confidence">
+                    <h2>{{ confidence }}%</h2>
+
+                    <p>{{ confidence_status }}</p>
+                </div>
+
+                <div class="progress">
+                    <!-- Dynamic inline CSS removed to eliminate validation engine errors -->
+                    <div id="confidence-bar" class="progress-bar"></div>
+                </div>
+
+                <div class="info-grid">
+
+                    <div class="info-box">
+                        <h3>Scientific Name</h3>
+                        <p>{{ info["Scientific Name"] }}</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>Gender</h3>
+                        <p>{{ info["Gender"] }}</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Habitat</h3>
+                        <p>{{ info["Habitat"] }}</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Diet</h3>
+                        <p>{{ info["Diet"] }}</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Conservation Status</h3>
+                        <p>{{ info["Conservation Status"] }}</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Lifespan</h3>
+                        <p>{{ info["Lifespan"] }}</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Location</h3>
+                        <p>{{ info["Location"] }}</p>
+                    </div>
+
+                </div>
+
+                <div class="fact-box">
+                    <h3>Interesting Fact</h3>
+                    <p>{{ info["Interesting Fact"] }}</p>
+                </div>
+
+                <a href="/predict" class="back-btn">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Predict Another Image
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Script to dynamically load the bar width and prevent linter complaints -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const confidenceValue = "{{ confidence }}";
+            const progressBar = document.getElementById("confidence-bar");
+            if (progressBar) {
+                progressBar.style.width = confidenceValue + "%";
+            }
+        });
+    </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const confidenceValue = parseFloat("{{ confidence }}") || 0;
+        const progressBar = document.getElementById("confidence-bar");
+        
+        if (progressBar) {
+            // Initialize base empty values
+            progressBar.style.width = "0%";
+            progressBar.style.transition = "width 1.4s cubic-bezier(0.25, 1, 0.2, 1)";
+            
+            // Request an independent tracking frame pass to begin execution animation smoothly
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    progressBar.style.width = confidenceValue + "%";
+                }, 150);
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,405 @@
+/* ==========================================================================
+   1. CORE ARCHITECTURE, VARIABLES & DOCUMENT RESET
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    /* iOS Interactive Palettes */
+    --ios-green: #34c759;
+    --ios-bg-blur: rgba(255, 255, 255, 0.08);
+    --ios-border: rgba(255, 255, 255, 0.12);
+    
+    /* Apple Core Spring Physics Easing Calculations */
+    --ios-spring: cubic-bezier(0.25, 1, 0.2, 1);
+    --ios-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    --transition-smooth: all 0.5s var(--ios-spring);
+    --transition-click: all 0.15s ease-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: #121612;
+    /* iOS Inter-Page Dynamic Layout Sliding Entrance Animation */
+    animation: iosPageEntrance 0.55s var(--ios-spring) forwards;
+    opacity: 0;
+}
+
+/* ==========================================================================
+   2. iOS INTER-PAGE ANIMATION SCHEMES
+   ========================================================================== */
+@keyframes iosPageEntrance {
+    from {
+        opacity: 0;
+        transform: scale(1.03) translateY(15px);
+        filter: blur(4px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0);
+    }
+}
+
+body.ios-exit-active {
+    animation: iosPageExit 0.45s var(--ios-spring) forwards !important;
+}
+
+@keyframes iosPageExit {
+    from {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.96) translateY(-10px);
+        filter: blur(8px);
+    }
+}
+
+/* ==========================================================================
+   3. LIQUID GLASS NAVBAR & DYNAMIC SLIDING BUBBLE ARCHITECTURE
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 1300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px; 
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    z-index: 1000;
+    transition: var(--transition-smooth);
+}
+
+.logo {
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.logo i {
+    color: var(--ios-green);
+    margin-right: 10px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 10px; 
+    position: relative;
+    /* Injects the specialized SVG liquid matrix engine across the element link track */
+    filter: url('#liquid-goo');
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 10px 22px;
+    display: inline-block;
+    border-radius: 50px;
+    transition: color 0.4s var(--ios-spring);
+    position: relative;
+    z-index: 2; /* Keeps link typography resting cleanly over the gel droplet */
+}
+
+/* Injected Dynamic Water Droplet Indicator Bubble Wrapper */
+.nav-blob {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 50px;
+    opacity: 0; /* Let JavaScript fade it in smoothly once measured */
+    
+    /* Volumetric Liquid Glass Specular Physics Profile Settings */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.08) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        inset 0 3px 8px rgba(255, 255, 255, 0.4), 
+        inset 0 -3px 8px rgba(0, 0, 0, 0.15),
+        0 6px 15px rgba(0, 0, 0, 0.15);
+        
+    /* Optimized transition settings tailored for elastic gooey stretching transformations */
+    transition: transform 0.45s cubic-bezier(0.18, 0.89, 0.32, 1.28),
+                width 0.4s var(--ios-spring),
+                height 0.4s var(--ios-spring),
+                opacity 0.2s ease;
+}
+
+/* Shiny Top Arc Gloss Reflection Overlay over the slider capsule */
+.nav-blob::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 15%;
+    width: 70%;
+    height: 30%;
+    border-radius: 30px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+/* ==========================================================================
+   4. HERO SECTIONS & LAYOUT CONTENT WRAPPERS
+   ========================================================================== */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.65)), url("../images/forest-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+    max-width: 900px;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: 68px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 span {
+    color: #9CCC65;
+}
+
+.hero-content p {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #f3f3f3;
+    margin-bottom: 45px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   5. TRUE 3D LIQUID GLASS (GEL CAPSULE) GLOBAL BUTTON COMPONENT
+   ========================================================================== */
+.btn, .back-btn, .btn-browse, button, input[type="submit"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 40px;
+    border-radius: 50px; 
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 5;
+    
+    /* Premium Multi-layered Gel Refraction Architecture */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.06) 100%);
+    backdrop-filter: blur(25px) saturate(210%);
+    -webkit-backdrop-filter: blur(25px) saturate(210%);
+    
+    /* Pure Volumetric CSS Drop Shadow & Highlight Arrays */
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 
+        inset 0 5px 12px rgba(255, 255, 255, 0.45),     
+        inset 0 -5px 14px rgba(0, 0, 0, 0.25),          
+        inset 0 12px 24px rgba(255, 255, 255, 0.12),    
+        0 10px 25px rgba(0, 0, 0, 0.3);                 
+        
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.2, 1), box-shadow 0.3s ease, background 0.3s ease;
+}
+
+/* Dynamic Convex 3D Acrylic Specular Highlight Bar Overlay */
+.btn::before, .back-btn::before, .btn-browse::before, button::before, input[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 8%;
+    width: 84%;
+    height: 38%;
+    border-radius: 40px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Green Translucent Wildlife Action Variant */
+.primary {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.38) 0%, rgba(46, 125, 50, 0.16) 100%);
+    border-color: rgba(124, 252, 0, 0.55);
+    box-shadow: 
+        inset 0 5px 12px rgba(255, 255, 255, 0.5), 
+        inset 0 -5px 14px rgba(0, 0, 0, 0.3),
+        0 12px 30px rgba(76, 175, 80, 0.35);
+}
+
+.primary:hover {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.48) 0%, rgba(46, 125, 50, 0.24) 100%);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 
+        inset 0 6px 16px rgba(255, 255, 255, 0.65), 
+        inset 0 -5px 16px rgba(0, 0, 0, 0.35),
+        0 16px 35px rgba(76, 175, 80, 0.48);
+}
+
+/* Frost Frosted Minimalist Variant */
+.secondary {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 100%);
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.secondary:hover {
+    background: #ffffff;
+    color: #2E7D32;
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 
+        inset 0 4px 12px rgba(255, 255, 255, 0.8),
+        0 14px 30px rgba(255, 255, 255, 0.22);
+    border-color: #ffffff;
+}
+
+/* ==========================================================================
+   6. GEL TOUCH ENGINE INTERACTION & WATER RIPPLE GRAPHICS
+   ========================================================================== */
+
+/* iPhone Haptic Compression Squeeze Simulation (Deflates Volumetrics on Active Press) */
+.btn:active, .back-btn:active, .btn-browse:active, button:active, input[type="submit"]:active, .nav-links a:active {
+    transform: translateY(1px) scale(0.94) !important;
+    filter: brightness(0.9);
+    box-shadow: 
+        inset 0 2px 6px rgba(255, 255, 255, 0.25), 
+        inset 0 -3px 8px rgba(0, 0, 0, 0.4),
+        0 4px 12px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Dynamic Hardware-Accelerated Expansion Vector Layer */
+.glass-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 70%);
+    transform: scale(0);
+    pointer-events: none;
+    z-index: 1;
+    animation: liquidGelExpansion 0.6s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes liquidGelExpansion {
+    from {
+        transform: scale(0);
+        opacity: 0.65;
+    }
+    to {
+        transform: scale(3.8);
+        opacity: 0;
+    }
+}
+
+/* ==========================================================================
+   7. SQUIRCLE ECOSYSTEM INTERACTION CARDS (Shared Across Sub-Modules)
+   ========================================================================== */
+.result-card, .upload-box, .info-box {
+    background: var(--ios-bg-blur);
+    backdrop-filter: blur(20px) saturate(190%);
+    -webkit-backdrop-filter: blur(20px) saturate(190%);
+    border: 1px solid var(--ios-border);
+    border-radius: 24px;
+    transition: var(--transition-smooth);
+}
+
+.info-box:hover, .result-card:hover, .upload-box:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.38);
+    border-color: rgba(255, 255, 255, 0.28);
+}
+
+/* ==========================================================================
+   8. MEDIA RESPONSIVE SCALING ADAPTATION PROFILE
+   ========================================================================== */
+@media(max-width: 992px){
+    .hero-content h1 {
+        font-size: 52px;
+    }
+    .hero-content p {
+        font-size: 18px;
+    }
+    .navbar {
+        padding: 15px 25px;
+    }
+    .nav-links {
+        gap: 20px;
+    }
+}
+
+@media(max-width: 768px){
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+        border-radius: 20px;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    .hero-content h1 {
+        font-size: 42px;
+    }
+    .hero-content p {
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 480px){
+    .hero-content h1 {
+        font-size: 34px;
+    }
+    .hero-content p {
+        font-size: 15px;
+    }
+    .btn, .back-btn, .btn-browse, button, input[type="submit"] {
+        width: 100%;
+    }
+    .hero-buttons {
+        flex-direction: column;
+    }
+}

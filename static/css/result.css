@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.70)),
+        url("../images/forest-bg.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    color:white;
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+
+.navbar{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:92%;
+    max-width:1300px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 40px;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:20px;
+    z-index:1000;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#fff;
+}
+
+.logo i{
+    color:#7CFC00;
+    margin-right:10px;
+}
+
+.navbar ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+.navbar ul li a{
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.navbar ul li a:hover{
+    color:#8BC34A;
+}
+
+/* ===========================
+   RESULT SECTION
+=========================== */
+
+.result-section{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:140px 20px 50px;
+}
+
+.result-card{
+    width:100%;
+    max-width:1200px;
+    display:grid;
+    grid-template-columns:1fr 1.2fr;
+    gap:30px;
+}
+
+/* ===========================
+   GLASS CARD
+=========================== */
+
+.image-card,
+.info-card{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:25px;
+
+    padding:30px;
+}
+
+/* ===========================
+   IMAGE
+=========================== */
+
+.image-card h2{
+
+    margin-bottom:20px;
+
+    text-align:center;
+}
+
+.image-card img{
+
+    width:100%;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.45);
+}
+
+/* ===========================
+   INFO
+=========================== */
+
+.info-card h1{
+
+    font-size:38px;
+
+    margin-bottom:10px;
+}
+
+.confidence{
+
+    font-size:20px;
+
+    color:#8BC34A;
+
+    margin-bottom:20px;
+}
+
+.progress{
+
+    width:100%;
+
+    height:12px;
+
+    background:rgba(255,255,255,.15);
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    margin-bottom:30px;
+}
+
+.progress-bar{
+
+    height:100%;
+
+    background:#4CAF50;
+
+    border-radius:30px;
+}
+
+/* ===========================
+   GRID
+=========================== */
+
+.info-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+}
+
+.info-box{
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:15px;
+
+    padding:18px;
+
+    border:1px solid rgba(255,255,255,.15);
+}
+
+.info-box h3{
+
+    color:#9CCC65;
+
+    margin-bottom:10px;
+
+    font-size:18px;
+}
+
+.info-box p{
+
+    color:#f2f2f2;
+
+    line-height:1.6;
+}
+
+/* ===========================
+   FACT BOX
+=========================== */
+
+.fact-box{
+
+    margin-top:25px;
+
+    background:rgba(255,255,255,.08);
+
+    padding:20px;
+
+    border-radius:15px;
+
+    border-left:5px solid #8BC34A;
+}
+
+.fact-box h3{
+
+    color:#9CCC65;
+
+    margin-bottom:10px;
+}
+
+.fact-box p{
+
+    line-height:1.8;
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.back-btn{
+
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:15px 35px;
+
+    background:#2E7D32;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:40px;
+
+    transition:.3s;
+}
+
+.back-btn:hover{
+
+    background:#43A047;
+
+    transform:translateY(-3px);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:900px){
+
+.result-card{
+
+grid-template-columns:1fr;
+
+}
+
+.info-grid{
+
+grid-template-columns:1fr;
+
+}
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+}
+
+@media(max-width:600px){
+
+.navbar{
+
+flex-direction:column;
+
+gap:15px;
+
+padding:20px;
+
+}
+
+.navbar ul{
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+.info-card h1{
+
+font-size:28px;
+
+}
+
+.confidence{
+
+font-size:18px;
+
+}
+
+}
+.confidence h2{
+
+font-size:45px;
+
+color:#7CFC00;
+
+margin-bottom:8px;
+
+}
+
+.confidence p{
+
+font-size:18px;
+
+font-weight:600;
+
+color:white;
+
+}
